@@ -7,6 +7,7 @@
 """
 
 import sys
+
 read = sys.stdin.readline
 n, m = map(int, read().split(" "))
 ice_box = [list(map(int, read().strip())) for _ in range(n)]
@@ -18,16 +19,21 @@ stack = []
 dy = [0, 0, 1, -1]
 dx = [1, -1, 0, 0]
 
-for y in range(n):
-    for x in range(m):
-        # 0이고 방문하지 않았으면
-        if visited_box[y][x] == 0 and ice_box[y][x] == 0:
-            # 상하좌우를 돌면서 stack에 넣기
-            # 리펙토링 생각해보기
-            for i in range(4):
-                ny = y + dy[i]
-                nx = x + dx[i]
-                # x, y가 얼음틀을 벗어나지 않는다면 stack에 넣기
-                if 0 < ny < n and 0 < nx < m:
-                    stack.append(ice_box[y][x])
-
+for j in range(n):
+    for i in range(m):
+        # 0이고 방문하지 않았으면 방문하고 stack에 넣기, 방문 처리 하기
+        if visited_box[j][i] == 0 and ice_box[j][i] == 0:
+            visited_box[j][i] = 1
+            stack.append((j, i))
+            print("초기", stack)
+        # stack 값을 하나씩 꺼내면서 상하좌우를 돌기
+        if stack:
+            y, x = stack.pop()
+            for k in range(4):
+                ny = y + dy[k]
+                nx = x + dx[k]
+                # x, y가 얼음틀을 벗어나지 않는다면 stack에 해당 좌표 값 넣기
+                if 0 <= ny < n and 0 <= nx < m and visited_box[ny][nx] == 0 and ice_box[ny][nx] == 0:
+                    visited_box[ny][nx] = 1
+                    stack.append((ny, nx))
+            print("마지막", stack)
