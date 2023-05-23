@@ -14,6 +14,7 @@ count = 0
 for hour in range(n + 1):
     for minute in range(0, 60):
         for sec in range(0, 60):
+            # 더 간단한 로직으로 수정
             if '3' in str(hour) + str(minute) + str(sec):
                 count += 1
 
