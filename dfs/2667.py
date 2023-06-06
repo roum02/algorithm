@@ -9,7 +9,7 @@ N = int(read())
 matrix = [list(map(int, read().strip())) for _ in range(N)]
 visited = [[0] * N for _ in range(N)]
 
-# def count_apartment():
+# def count_apartment(y, x):
 #     stack = []
 
 # 위 아래 오 왼
@@ -23,6 +23,7 @@ for y in range(N):
     for x in range(N):
         if matrix[y][x] != 0 and visited[y][x] == 0:
             stack.append((y, x))
+            visited[y][x] = 1
 
             while stack:
                 sy, sx = stack.pop()
@@ -33,3 +34,10 @@ for y in range(N):
                         continue
                     elif matrix[sy][sx] != 0 and visited[sy][sx] == 0:
                         stack.append((sy, sx))
+                        visited[sy][sx] = 1
+
+
+
+
+
+# print(apartment_count)
