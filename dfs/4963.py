@@ -9,6 +9,7 @@
 import sys
 
 read = sys.stdin.readline
+sys.setrecursionlimit(10000)
 
 
 def dfs(y, x):
@@ -36,8 +37,8 @@ while True:
     visited = [[0] * w for _ in range(h)]
     count = 0
 
-    for i in range(h):
-        for j in range(w):
+    for j in range(h):
+        for i in range(w):
             if dfs(j, i):
                 count += 1
 
