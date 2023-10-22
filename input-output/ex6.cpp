@@ -30,14 +30,14 @@ int main(){
      * because the value of the constant isn't stored in the cumputer's memory.
      * so two examples below have errors.
     */
-    int &r2 = 3;
-    int &r3 = a * a;
+    // int &r2 = 3;
+    // int &r3 = a * a;
 
     /** 
      * the meaning of an r-value is that represents the right-hand side value, and as such, so it cann't be changed.
      * in this case, 'a' is a variable. so it can be changed, and as such, 'a' is l-value.
     */
-    int &&r1 = a;
+    // int &&r1 = a;
     int &&r2 = 3;
     int &&r3 = a * a;
 
